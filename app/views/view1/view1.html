@@ -1,1 +1,10 @@
-<p>This is the partial for view 1.</p>
+
+<h3 ng-click="myFuncTest()" >{{test}}</h3>
+<div ng-repeat="user in someArray">
+    <div class="collection">
+        <!-- <div ng-click="elementAction(user.id)">{{user.name}}</div> -->
+        <!-- <button ng-click="removeTask(task.id)">remove</button> -->
+        <a  ng-click="myFunc(user.id,user.name)" class="collection-item">{{user.name}}</a>
+        <!-- <a href="#!" class="collection-item">{{user.name}}</a> -->
+    </div>
+</div>

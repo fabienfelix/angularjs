@@ -1,18 +1,22 @@
 module.exports = function(config) {
     config.set({
 
-        basePath: '',
+        basePath: '../..',
 
         files: [
             // Libraries
             './app/bower_components/angular/angular.js',
             './app/bower_components/angular-mocks/angular-mocks.js',
+            './app/bower_components/angular-loader/angular-loader.js',
             './app/bower_components/angular-animate/angular-animate.js',
             './app/bower_components/angular-resource/angular-resource.js',
-            './app/bower_components/angular-route/angular-route.js'
-
-            './components/**/*.js'
-            './views/**/*.js'
+            './app/bower_components/angular-route/angular-route.js',
+            './app/bower_components/angular-cookies/angular-cookies.js',
+            './app/bower_components/jquery/dist/jquery.js',
+            // Views
+            './app/views/**/*.js',
+            // Specs
+            './test/unit/spec/*.js'
 
         ],
 

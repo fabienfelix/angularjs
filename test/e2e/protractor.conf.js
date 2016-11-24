@@ -2,7 +2,7 @@
 
 exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
-  baseUrl: 'http://localhost:8000/index.html#!/',
+  baseUrl: 'http://localhost:8100/index.html#!/',
   specs: ['./spec/*.e2e.js'],
   maxSessions: 1,
   framework: 'jasmine2',

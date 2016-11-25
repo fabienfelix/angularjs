@@ -1,10 +1,32 @@
-
-<h3 ng-click="myFuncTest()" >{{test}}</h3>
-<div ng-repeat="user in someArray">
+<h3>Local storage</h3>
+<form ng-submit="submit()">
+    <label>Nom de l'élément à ajouter :
+        <input type="text" name="elementName" ng-model="element.name" required>
+    </label>
+</form>
+<div ng-repeat="elt in elements">
     <div class="collection">
-        <!-- <div ng-click="elementAction(user.id)">{{user.name}}</div> -->
-        <!-- <button ng-click="removeTask(task.id)">remove</button> -->
-        <a  ng-click="myFunc(user.id,user.name)" class="collection-item">{{user.name}}</a>
-        <!-- <a href="#!" class="collection-item">{{user.name}}</a> -->
+        <a ng-click="" class="collection-item">{{elt.name}}</a>
     </div>
+</div>
+<a ng-click="save()" class="waves-effect waves-light btn">save</a>
+<a ng-click="refresh()" class="waves-effect waves-light btn">refresh</a>
+<h3>Cookies</h3>
+<h5>Put Cookie</h5>
+<form ng-submit="submitCookie()">
+    <label>Cookie Key :
+        <input type="text" ng-model="cookie.key" required>
+    </label>
+    <label>Cookie Value :
+        <input type="text" ng-model="cookie.value" required>
+    </label>
+</form>
+<h5>Get Cookie</h5>
+<form ng-submit="getCookie()">
+    <label>Cookie Key :
+        <input type="text" ng-model="cookieKey" required>
+    </label>
+</form>
+<div>
+    <span>Cookie value : {{cookieValue}}</span>
 </div>

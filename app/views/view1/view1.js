@@ -11,32 +11,52 @@ angular.module('myApp.view1', ['ngRoute', 'ngCookies', 'ngResource'])
 
 .controller('View1Ctrl', ['$scope', '$cookies', '$cookieStore', function($scope, $cookies, $cookieStore) {
 
-    function Element(name) {
+    function newUuid() {
+        var date = new Date();
+        return date.getTime();
+    };
+
+
+    // LOCAL STORAGE
+
+    function Element(id, name) {
+        this.id = id;
         this.name = name;
-    }
+    };
 
     var element = $scope.element = {};
 
     var elements = $scope.elements = [];
 
-    $scope.submit = function() {
-        var elt = new Element(element.name);
+    $scope.submitElement = function() {
+        var elt = new Element(newUuid(), element.name);
         elements.push(elt);
     };
 
-    $scope.save = function() {
+    $scope.saveElements = function() {
+        console.log($scope.elements);
         localStorage.setItem("elements", JSON.stringify(elements));
-        alert("The data was saved.");
+        Materialize.toast('Saved !', 2000);
+        // alert("The data was saved.");
         return true;
     };
 
-    $scope.refresh = function() {
+    $scope.refreshElements = function() {
         var elts = localStorage.getItem("elements");
-        console.log(elts);
-        $scope.elements = JSON.parse(elts);
+        elts = JSON.parse(elts);
+        var i = 0;
+        elements = [];
+        for (var elt of elts){
+            elements.push(new Element(elt.id, elt.name));
+            i++;
+        }
+        $scope.elements = elements;
+        Materialize.toast('Refreshed !', 1000);
         return true;
     };
 
+
+    // COOKIES
 
     function Cookie(key, value) {
         this.key = key;
@@ -55,10 +75,7 @@ angular.module('myApp.view1', ['ngRoute', 'ngCookies', 'ngResource'])
 
     $scope.getCookie = function() {
         console.log('getCookie with key : ' + $scope.cookieKey);
-        // console.log('cookie key : ' + $scope.cookieKey);
-        $scope.cookieValue  = $cookies.get($scope.cookieKey);
-        // chooseCookie = $cookie.get('0');
-        // console.log(chooseCookie.key, chooseCookie.value);
+        $scope.cookieValue = $cookies.get($scope.cookieKey);
     };
 
 
